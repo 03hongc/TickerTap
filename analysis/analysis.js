@@ -152,7 +152,7 @@ function fetchPriceHistory(ticker, range = "30") {
 let chartInstance = null;
 
 function fetchNewsSentiment(ticker) {
-  const url = `https://newsapi.org/v2/everything?q=${ticker}&sortBy=publishedAt&pageSize=100&apiKey=a0b93be31b484aff95585fef018d6944`;
+  const url = `/api/fetchNews?ticker=${ticker}`;
 
   fetch(url)
     .then((res) => res.json())
