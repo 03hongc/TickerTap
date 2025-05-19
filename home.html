@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TickerTap | Home</title>
+    <link rel="stylesheet" href="home.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="/analysis/analysis.html">Analysis</a></li>
+        <li><a href="/about/about.html">About</a></li>
+        <li><a href="/help/help.html">Help</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header with fade-in -->
+    <header data-aos="fade-up">
+      <h1>TickerTap</h1>
+      <p>Quick, data-driven stock analysis with just a tap</p>
+    </header>
+
+    <!-- Main content -->
+    <main>
+      <section id="search-section" data-aos="fade-up" data-aos-delay="200">
+        <form id="stockSearchForm">
+          <label for="tickerInput">Enter Stock Ticker:</label>
+          <input
+            type="text"
+            id="tickerInput"
+            name="ticker"
+            placeholder="e.g., AAPL"
+            required
+          />
+          <button class="button-33" role="button">Analyze</button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2025 TickerTap. All rights reserved. A project by Collin Hong
+      </p>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+    <script>
+      document
+        .getElementById("stockSearchForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const ticker = document
+            .getElementById("tickerInput")
+            .value.trim()
+            .toUpperCase();
+          if (ticker) {
+            fetch("/api/saveTicker", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ symbol: ticker }),
+            }).catch((err) => console.error("Failed to save ticker:", err));
+
+            // Redirect after saving
+            window.location.href = `../analysis/analysis.html?ticker=${ticker}`;
+          }
+        });
+    </script>
+  </body>
+</html>
