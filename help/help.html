@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TickerTap | Help</title>
+    <link rel="stylesheet" href="help.css" />
+  </head>
+  <body>
+    <!-- Nav Bar -->
+    <nav>
+      <ul>
+        <li><a href="/TickerTap/main/home.html">Home</a></li>
+        <li><a href="/TickerTap/analysis/analysis.html">Analysis</a></li>
+        <li><a href="/TickerTap/about/about.html">About</a></li>
+        <li><a href="help.html">Help</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+      <h1>Help</h1>
+    </header>
+
+    <!-- Main Help Content -->
+    <main class="help-container">
+      <section>
+        <h2>How TickerTap Works</h2>
+        <p>
+          TickerTap gives you a quick snapshot of a stock's overall health using
+          a score from 0 to 100, called the <strong>DD Score</strong> (Due
+          Diligence Score). It combines real-time financial data and recent news
+          sentiment so you don’t have to dig through reports or articles.
+        </p>
+      </section>
+
+      <section>
+        <h2>How the DD Score is Calculated</h2>
+        <p>The DD Score is made up of two parts:</p>
+        <ul>
+          <li>
+            <strong>Financial Score (0–50):</strong> Based on key company stats
+            like P/E ratio, debt levels, profitability, and overall financial
+            health.
+          </li>
+          <li>
+            <strong>Sentiment Score (0–50):</strong> Based on the tone of recent
+            news articles — positive, neutral, or negative mentions of the
+            company.
+          </li>
+        </ul>
+        <p>
+          A score close to 100 means strong financials and positive news. A
+          lower score may indicate risk or uncertainty.
+        </p>
+      </section>
+
+      <section>
+        <h2>Key Metrics Explained</h2>
+        <ul>
+          <li>
+            <strong>P/E Ratio:</strong> Compares the stock price to company
+            earnings. Lower can mean undervalued; higher can mean overvalued or
+            fast growth.
+          </li>
+          <li>
+            <strong>EPS:</strong> Earnings Per Share — shows profitability per
+            stock share.
+          </li>
+          <li>
+            <strong>Debt to Equity:</strong> Measures how much debt the company
+            has vs. its value. Lower is usually safer.
+          </li>
+          <li>
+            <strong>ROE:</strong> Return on Equity — how well the company uses
+            investors’ money to make profit.
+          </li>
+          <li>
+            <strong>Current Ratio:</strong> Shows if a company can pay its
+            short-term bills. Around 1.5–2 is healthy.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Using the Site</h2>
+        <ol>
+          <li>
+            <strong>Search a Stock:</strong> Enter a stock symbol (e.g., AAPL)
+            on the home page.
+          </li>
+          <li>
+            <strong>Review the DD Score:</strong> Check the combined score and
+            decide if it fits your strategy.
+          </li>
+          <li>
+            <strong>Explore Details:</strong> View financial metrics, chart
+            trends, and news sentiment breakdown.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Troubleshooting</h2>
+        <ul>
+          <li>
+            <strong>Search not working?</strong> Make sure the ticker is valid
+            (like AAPL, TSLA, etc.).
+          </li>
+          <li>
+            <strong>DD Score stuck on "Calculating"?</strong> Wait a moment or
+            refresh — the data may be loading.
+          </li>
+          <li>
+            <strong>No news or chart data?</strong> It could be a temporary
+            issue from the data source. Try again later.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <section>
+      <h2>Recently Searched Tickers</h2>
+      <ul id="recent-tickers" class="ticker-list">
+        <li>Loading...</li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        &copy; 2025 TickerTap. All rights reserved. A project by Collin Hong
+      </p>
+    </footer>
+
+    <script>
+      fetch("/api/getTickers")
+        .then((res) => res.json())
+        .then((data) => {
+          const list = document.getElementById("recent-tickers");
+          list.innerHTML = ""; // Clear "Loading..."
+
+          if (data.length === 0) {
+            list.innerHTML = "<li>No recent searches yet.</li>";
+            return;
+          }
+
+          data
+            .slice(-10)
+            .reverse()
+            .forEach((ticker) => {
+              const li = document.createElement("li");
+              li.textContent = `${ticker.symbol.toUpperCase()} — ${new Date(
+                ticker.created_at
+              ).toLocaleDateString()}`;
+              list.appendChild(li);
+            });
+        })
+        .catch((err) => {
+          console.error("Error fetching tickers:", err);
+          document.getElementById("recent-tickers").innerHTML =
+            "<li>Error loading data.</li>";
+        });
+    </script>
+  </body>
+</html>

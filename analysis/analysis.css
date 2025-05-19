@@ -1,0 +1,171 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-top: 50px;
+}
+
+header h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Navigation */
+nav {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: green;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f3f3f3;
+  font-size: 14px;
+  color: #666;
+  margin-top: auto;
+}
+
+/* Responsive (Mobile) */
+@media (max-width: 500px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+#metrics-section {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+}
+
+#metrics-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+#metrics-list li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+/* Chart styling*/
+#chart-section {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#priceChart {
+  width: 100% !important;
+  height: auto !important;
+}
+
+#chart-controls {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+#rangeSelect {
+  padding: 1px 3px;
+  font-size: 14px;
+}
+
+/* News sentiment styling*/
+#sentiment-section {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#sentiment-summary {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* DD Score Styling */
+#dd-score-box {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+  padding: 14px 20px;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background: linear-gradient(to right, #e8f5e9, #f1fdf3);
+  color: #2e7d32;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#dd-score-section {
+  display: none; /* hide the whole section by default */
+  text-align: center;         /* Center the text */
+  margin-top: 40px;           /* Add spacing from previous section */
+}
