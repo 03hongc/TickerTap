@@ -13,4 +13,4 @@ TickerTap is a stock analysis web app that gives users a quick overview of a sto
 
 ## Developer Manual
 
-[View Developer Manual](./DEV_MANUAL.md)
+[View Developer Manual](./docs/DEV_MANUAL.md)
