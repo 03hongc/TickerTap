@@ -30,26 +30,19 @@ SUPABASE_ANON_KEY=your_supabase_anon_key
 We use Vercel for deployment. This project is automatically deployed when code is pushed to the main branch.
 
 To manually deploy:
-
-Go to https://vercel.com
-
-Connect your GitHub repository
-
-Set the environment variables in Vercel under Project Settings → Environment Variables
-
-Click Deploy
-
-### API References
+- Go to https://vercel.com
+- Connect your GitHub repository
+- Set the environment variables in Vercel under Project Settings → Environment Variables
+- Click Deploy
 
 ---
 
+### API References
 #### `POST /api/saveTicker`
 
 **Description**: Saves a stock ticker to Supabase.
 
 ⚠️ **Note**: Ensure your Supabase Row Level Security (RLS) policies allow both `anon` and `public` roles to `INSERT` and optionally `SELECT` on the `ticker` table.
-
----
 
 #### `GET /api/getTickers`
 
@@ -58,17 +51,12 @@ Click Deploy
 ---
 
 ### External APIs Used
-
----
-
 #### 📈 Financial Modeling Prep API
 
 - **URL**: [https://financialmodelingprep.com/api/v3/](https://financialmodelingprep.com/api/v3/)
 - **Usage**:
   - Fetches financial data such as P/E ratio, revenue, and earnings growth
   - Called from the frontend to display company metrics on the analysis page
-
----
 
 #### 📰 NewsAPI
 
@@ -77,18 +65,18 @@ Click Deploy
   - Retrieves news articles related to a given ticker
   - Used for basic sentiment analysis (positive, neutral, negative)
 
+---
+
 ### Known Bugs
+- Supabase RLS policies must be configured correctly or inserts/selects may silently fail.
+- Some edge cases for invalid ticker input are not handled.
+- Rate limits may apply if Financial Modeling Prep API is added later
+- Recently searched tickers:
+     Are not user-specific
+     Do not update to show only the most recent if the same ticker is entered again
+     Do not filter out invalid tickers
 
-Supabase RLS policies must be configured correctly or inserts/selects may silently fail.
-
-Some edge cases for invalid ticker input are not handled.
-
-Rate limits may apply if Financial Modeling Prep API is added later
-
-Recently searched tickers:
-   Are not user-specific
-   Do not update to show only the most recent if the same ticker is entered again
-   Do not filter out invalid tickers
+---
 
 ### Roadmap
 - Add user authentication via Supabase Auth
