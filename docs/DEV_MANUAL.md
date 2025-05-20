@@ -76,43 +76,6 @@ Click Deploy
 - **Usage**:
   - Retrieves news articles related to a given ticker
   - Used for basic sentiment analysis (positive, neutral, negative)
-  ### API References
-
----
-
-#### `POST /api/saveTicker`
-
-**Description**: Saves a stock ticker to Supabase.
-
-⚠️ **Note**: Ensure your Supabase Row Level Security (RLS) policies allow both `anon` and `public` roles to `INSERT` and optionally `SELECT` on the `ticker` table.
-
----
-
-#### `GET /api/getTickers`
-
-**Description**: Retrieves the most recently searched tickers from Supabase.
-
----
-
-### External APIs Used
-
----
-
-#### 📈 Financial Modeling Prep API
-
-- **URL**: [https://financialmodelingprep.com/api/v3/](https://financialmodelingprep.com/api/v3/)
-- **Usage**:
-  - Fetches financial data such as P/E ratio, revenue, and earnings growth
-  - Called from the frontend to display company metrics on the analysis page
-
----
-
-#### 📰 NewsAPI
-
-- **URL**: [https://newsapi.org/v2/everything](https://newsapi.org/v2/everything)
-- **Usage**:
-  - Retrieves news articles related to a given ticker
-  - Used for basic sentiment analysis (positive, neutral, negative)
 
 ### Known Bugs
 
@@ -128,15 +91,9 @@ Recently searched tickers:
    Do not filter out invalid tickers
 
 ### Roadmap
-
-Add user authentication via Supabase Auth
-
-Implement ticker deletion feature
-
-Improve error messages and frontend validation
-
-Add tests for backend API routes
-
-Show sentiment and technical trend visualizations
-
-Add loading states and UX improvements
+- Add user authentication via Supabase Auth
+- Implement ticker deletion feature
+- Improve error messages and frontend validation
+- Add tests for backend API routes
+- Show sentiment and technical trend visualizations
+- Add loading states and UX improvements
