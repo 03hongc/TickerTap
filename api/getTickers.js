@@ -7,7 +7,7 @@ const supabase = createClient(
 
 export default async function handler(req, res) {
   const { data, error } = await supabase
-    .from("tickers")
+    .from("ticker")
     .select("symbol, created_at")
     .order("created_at", { ascending: false })
     .limit(10);
