@@ -39,28 +39,80 @@ Set the environment variables in Vercel under Project Settings → Environment V
 
 Click Deploy
 
-### API Reference
+### API References
 
-POST /api/saveTicker
-Description: Saves a stock ticker to Supabase.
+---
 
-Request Body:
+#### `POST /api/saveTicker`
 
-json
-Copy
-Edit
-{
-"symbol": "AAPL"
-}
-Responses:
+**Description**: Saves a stock ticker to Supabase.
 
-200 OK: Insert succeeded
+⚠️ **Note**: Ensure your Supabase Row Level Security (RLS) policies allow both `anon` and `public` roles to `INSERT` and optionally `SELECT` on the `ticker` table.
 
-400 Bad Request: Invalid or missing symbol
+---
 
-500 Internal Server Error: Supabase insert failed
+#### `GET /api/getTickers`
 
-⚠ Note: Ensure your Supabase Row Level Security (RLS) policies allows both anon and public roles to INSERT and optionally SELECT on the ticker table.
+**Description**: Retrieves the most recently searched tickers from Supabase.
+
+---
+
+### External APIs Used
+
+---
+
+#### 📈 Financial Modeling Prep API
+
+- **URL**: [https://financialmodelingprep.com/api/v3/](https://financialmodelingprep.com/api/v3/)
+- **Usage**:
+  - Fetches financial data such as P/E ratio, revenue, and earnings growth
+  - Called from the frontend to display company metrics on the analysis page
+
+---
+
+#### 📰 NewsAPI
+
+- **URL**: [https://newsapi.org/v2/everything](https://newsapi.org/v2/everything)
+- **Usage**:
+  - Retrieves news articles related to a given ticker
+  - Used for basic sentiment analysis (positive, neutral, negative)
+  ### API References
+
+---
+
+#### `POST /api/saveTicker`
+
+**Description**: Saves a stock ticker to Supabase.
+
+⚠️ **Note**: Ensure your Supabase Row Level Security (RLS) policies allow both `anon` and `public` roles to `INSERT` and optionally `SELECT` on the `ticker` table.
+
+---
+
+#### `GET /api/getTickers`
+
+**Description**: Retrieves the most recently searched tickers from Supabase.
+
+---
+
+### External APIs Used
+
+---
+
+#### 📈 Financial Modeling Prep API
+
+- **URL**: [https://financialmodelingprep.com/api/v3/](https://financialmodelingprep.com/api/v3/)
+- **Usage**:
+  - Fetches financial data such as P/E ratio, revenue, and earnings growth
+  - Called from the frontend to display company metrics on the analysis page
+
+---
+
+#### 📰 NewsAPI
+
+- **URL**: [https://newsapi.org/v2/everything](https://newsapi.org/v2/everything)
+- **Usage**:
+  - Retrieves news articles related to a given ticker
+  - Used for basic sentiment analysis (positive, neutral, negative)
 
 ### Known Bugs
 
